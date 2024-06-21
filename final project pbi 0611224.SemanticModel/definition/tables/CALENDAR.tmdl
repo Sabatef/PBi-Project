@@ -1,0 +1,59 @@
+table CALENDAR
+	lineageTag: 871c9e98-bfff-4342-bf89-4925ff01d508
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 8a4bd741-e64a-4916-a6cb-d264ce35c047
+		summarizeBy: none
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: 2c1f866a-e509-4d11-9382-86e72b1523b9
+			defaultHierarchy: LocalDateTable_8d7eeb54-709f-45a6-b39e-250040a7b227.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column YEAR = YEAR('CALENDAR'[Date])
+		dataType: int64
+		formatString: 0
+		lineageTag: 9394136b-7f6d-4774-999a-1a1aec2fb7c8
+		summarizeBy: sum
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	column MONTH = MONTH('CALENDAR'[Date])
+		dataType: int64
+		formatString: 0
+		lineageTag: 13ebd710-bad8-428b-a8b2-1fee966ee8b1
+		summarizeBy: sum
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	column DAY = FORMAT(DAY('CALENDAR'[Date]), "dddd")
+		dataType: string
+		lineageTag: c577a619-3977-4ea6-ab46-c54aedbebe19
+		summarizeBy: none
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	column MONTHNAME = FORMAT('CALENDAR'[Date],"MMMM")
+		dataType: string
+		lineageTag: 3495702e-0091-4ddf-9517-1d93a82d27d3
+		summarizeBy: none
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	partition CALENDAR = calculated
+		mode: import
+		source = CALENDAR(MIN(financial_loan[issue_date]), MAX(financial_loan[issue_date]))
+
+	annotation PBI_Id = 5043b175234048209fbf68fb558a3b47
+

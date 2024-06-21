@@ -1,0 +1,26 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["financial_loan"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.130.754.0 (24.06)
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table financial_loan
+ref table DateTableTemplate_464e64eb-84ab-4c84-8293-f8cf813bfa96
+ref table LocalDateTable_2062dbd6-53ec-4925-a226-6d47c9b58fb7
+ref table LocalDateTable_0e7f9b80-ebba-452e-9b41-0780ba9e9383
+ref table LocalDateTable_f2168778-9df6-488a-819b-828e1eea87c2
+ref table CALENDAR
+ref table LocalDateTable_8d7eeb54-709f-45a6-b39e-250040a7b227
+
+ref cultureInfo en-US
+
